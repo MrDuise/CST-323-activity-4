@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="layouts/defaultTemplate">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Login</title>
+</head>
+
+<body>
+	<div layout:fragment="content">
+
+	<!-- This pages sole purpose is a landing page, directing the user to login  -->
+	<h3> Hello! </h3>
+	<br />
+	<img th:src="@{/images/dumpsterfirelogotransparentgreen.png}" style="width:20%;height:20%;" alt="Logo of Dumpster Fire"/><br /><br /> 
+	<p>This is a blog post application for CST 339 Java III at Grand Canyon University.
+	Users will be able to create, read, update, and delete posts in which they complain about their day.
+	</p>
+	<br />
+	<p>Written by Michael Duisenberg and Nicole Loughnane.</p>
+	<br />
+	<h5>Please use the following button or the menu to be taken to the login/register page </h5>
+	<br />
+	<a href="/login/" class="btn btn-primary" role="button">Continue</a>
+	<br />
+</body>
+
+</html>

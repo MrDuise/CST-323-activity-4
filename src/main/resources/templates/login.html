@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="layouts/defaultTemplate">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Login</title>
+</head>
+
+<body>
+	<div layout:fragment="content">
+
+		  
+		<form action="#" th:action="@{/login}" method="post">
+
+			
+					<label>User Name:</label>
+					<input type="text" name="username" id="username" placeholder="Username" required/>
+				
+					<br />
+					<br />
+					<label>Password: &nbsp</label>
+					<input type="password" name="password" id="password" placeholder="Password" required/>
+				
+					<br />
+					<br />
+					
+				<div th:if="${param.error}">
+				 <h6 style="color:red">Invalid Username or Password. </h6>
+            </div>
+					<input type="submit" value="Sign In" class="btn btn-primary"  /> 
+		</form>
+
+			<br />
+			<div id="register">
+				<h6>New User? Register for an account here </h6>
+				<a href="/register/" class="btn btn-secondary" role="button">Register</a>
+			</div>
+
+
+			
+	</div>
+</body>
+
+</html>

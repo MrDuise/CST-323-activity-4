@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="layouts/defaultTemplate">
+
+<head>
+	<meta charset="UTF-8">
+	<title>My Posts</title>
+	<style>
+		/* #my-table {
+			border-collapse: separate;
+		}
+
+		#my-table th,
+		td {
+			border: 1px solid black;
+			font-family: Lucida Sans;
+			font-size: 20px;
+		}
+
+		#my-table th {
+			color: #FFFFFF;
+			background-color: #293462;
+		} */
+
+		h5 {
+			color: black;
+		}
+
+		p {
+			color: black;
+		}
+	</style>
+</head>
+
+<body>
+	<div layout:fragment="content">
+		
+		<tbody>
+			<tr th:if="${posts.empty}">
+				<td style="text-align:center" colspan="4"> No posts available </td>
+			</tr>
+		</tbody>
+		
+		<div id="newPost">
+				
+				<a href="/posts/createpost" class="btn btn-success" role="button">New Post</a>
+			</div>
+		
+		<div class="m-3 p-2 card w-75" style="width: 18rem;" th:each="post : ${posts}" align=left>
+			<div class="card-body">
+				<h5 class="card-title" th:text="${post.postName}">Card title</h5>
+				<h6 class="card-subtitle mb-2 text-muted" th:text="${post.userName}">Card subtitle</h6>
+				<p class="card-text" th:text="${post.postBody}">Some quick example text to build on the card title and
+					make up the bulk of the
+					card's content.</p>
+
+
+				<form action="#" th:action="@{/posts/edit}" th:object="${post}" method="post">
+					<input type="hidden" th:value="*{postID}" id="postID" name="postID">
+					<input type="submit" value="Edit" class="btn btn-primary" />
+				</form>
+
+				<form action="#" th:action="@{/posts/delete}" th:object="${post}" method="post">
+					<input type="hidden" th:value="*{postID}" id="postID" name="postID">
+					<input type="submit" value="Delete" class="btn btn-danger" />
+				</form>
+
+
+				<form action="#" th:action="@{/posts/displayById}" th:object="${post}" method="post">
+					<input type="hidden" th:value="*{postID}" id="postID" name="postID">
+					<input type="submit" value="View Details" class="btn btn-secondary" />
+				</form>
+
+
+			</div>
+
+
+		</div>
+
+	</div>
+
+</body>
+
+
+</html>

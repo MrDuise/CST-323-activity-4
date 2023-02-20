@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="layouts/defaultTemplate">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Edit a Post</title>
+</head>
+
+<body>
+<div layout:fragment="content">
+<h3>Edit a Post </h3>
+<br/>
+		<form action="#" th:action="@{/posts/update}" th:object="${post}" method="post">
+		
+			<input type="hidden" th:field="*{postID}">
+			<input type="hidden" th:field="*{userName}">
+			<label> Post Name: </label>
+			<input type="text" th:field="*{postName}">
+			<br />
+			<br />
+			<h6 style="color:red" th:if="${#fields.hasErrors('postName')}" th:errors="*{postName}">Post Name Error</h6>
+			<br />
+			<label> Post Body: </label>
+			<br />
+			<textarea th:field="*{postBody}" cols="45" rows="8"></textarea>
+			<br />
+			<br />
+			<h6 style="color:red" th:if="${#fields.hasErrors('postBody')}" th:errors="*{postBody}">Post Body Error</h6>
+			<br />
+			<a href="/posts/displayPosts" class="btn btn-secondary" role="button">Go Back</a>
+			<input type="submit" value="Update" class="btn btn-primary" />
+			
+		</form>
+			
+	</div>
+
+
+</body>
+
+</html>

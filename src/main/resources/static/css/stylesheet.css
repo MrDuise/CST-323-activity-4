@@ -1,0 +1,13 @@
+/*Stylesheet to override Bootstrap*/
+
+/*This specifies font and color for the main body of the site*/
+body {
+  font-family:Lucida Sans;
+  font-size: 20px;
+  font-weight:100;
+  color:aliceblue;
+  background:#2C3333;
+   margin: auto;
+  
+}
+

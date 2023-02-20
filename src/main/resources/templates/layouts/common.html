@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	<title>CST 339 Milestone Application</title>
+	<style>
+		a{
+			color: black;
+			
+			text-decoration: none;
+		}
+	</style>
+</head>
+
+<body style="margin-right: 0px; margin-left: 0px">
+	<div th:fragment="header">	
+		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+			<div class="container-fluid">
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01"
+					aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+					<a class="navbar-brand" href="#"><img src="../images/dumpsterfirelogogreen.png" alt="logo" width ="50" height="40"></a>
+					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+						<li class="nav-item" sec:authorize="!isAuthenticated()">
+							<a class="nav-link" aria-current="page" href="/login/#">Login</a>
+						</li>
+						<li class="nav-item" sec:authorize="!isAuthenticated()">
+							<a class="nav-link" href="/register/#">Register</a>
+						</li>
+					</ul>
+					<ul>
+					<li class="nav-item" sec:authorize="isAuthenticated()">
+					<a class="btn btn-dark" th:href="@{/logout}">Logout</a>
+					</li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+		<br />
+		<div align="center">
+			<h2>DumpsterFire</h3>
+			<br/>
+		</div>
+		<!-- Page Title and  Log -->
+		<h3 th:text="${title}">Default Message Text</h3><br />
+	</div>
+	
+	<div th:fragment="footer">
+
+	</div>
+</body>
+
+</html>
