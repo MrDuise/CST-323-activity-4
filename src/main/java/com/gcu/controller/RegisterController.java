@@ -2,6 +2,8 @@ package com.gcu.controller;
 
 import javax.validation.Valid;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -31,6 +33,8 @@ public class RegisterController {
     
     @Autowired
     private InterfaceRegisterBusinessService service;
+    
+    Logger logger = LoggerFactory.getLogger(getClass());
 
 	@GetMapping("/")
 	/**
@@ -54,6 +58,8 @@ public class RegisterController {
 	 */
 	@PostMapping("/doRegister")
 	public String doRegister(@Valid UserModel userModel, BindingResult bindingResult, Model model) {
+		
+		logger.info("Entering RegisterController.doRegister()");
 
 		   int userId = 1;
 

@@ -6,6 +6,8 @@ import java.util.Map;
 
 import javax.validation.Valid;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -38,6 +40,8 @@ public class PostController {
     
     @Autowired
     private UserBusinessService userService;
+    
+    Logger logger = LoggerFactory.getLogger(getClass());
 
     
     @GetMapping("/displayPosts")
@@ -60,6 +64,8 @@ public class PostController {
      */
     @PostMapping("/displayById")
     public String displayPostById(@Valid PostModel POST, BindingResult result, Model model) {
+    	
+    	logger.info("Entering PostController.displayPostById");
 
     	try {
     		PostModel post = service.getPostById(POST.getPostID());
@@ -105,6 +111,9 @@ public class PostController {
         // print the form values out
         System.out.println(String.format("form with post name of %s and post body of %s", postModel.getPostName(),
                 postModel.getPostBody()));
+    	
+    	
+    	logger.info(String.format("form with post name of %s and post body of %s", postModel.getPostName(),postModel.getPostBody()));
 
         // print data validation errors to the screen
         if (bindingResult.hasErrors()) {
@@ -136,6 +145,8 @@ public class PostController {
      */
     @PostMapping("/edit")
     public String showUpdateForm(@Valid PostModel POST, BindingResult result, Model model) {
+    	
+    	logger.info("Entering update form");
 
         try {
 
@@ -177,9 +188,11 @@ public class PostController {
 
             return "editpost";
         }
-System.out.println(post);
+//System.out.println(post);
         // edit an existing post
         service.editPost(post);
+        
+        logger.info(String.format("this is the post %s", post));
 
         // display posts view upon successful creation of posts
         model.addAttribute("title", "My Posts");
