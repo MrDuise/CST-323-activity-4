@@ -211,6 +211,8 @@ public class PostController {
      */
     @PostMapping("/delete")
     public String displayDelete(@Valid PostModel POST, BindingResult result, Model model) {
+    	
+    	logger.info("Entering PostController.displayDelete");
         
         try {
             PostModel post = service.getPostById(POST.getPostID());
