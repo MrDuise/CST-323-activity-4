@@ -3,8 +3,8 @@ package com.gcu.controller;
 
 import java.util.Map;
 
-
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 
 
@@ -28,6 +28,7 @@ import com.gcu.model.CredentialsModel;
 @SessionAttributes("user")
 public class LoginController {
 
+	 Logger logger = LoggerFactory.getLogger(getClass());
 
 	@GetMapping("/login")
 	//@PostMapping("/")
@@ -38,7 +39,8 @@ public class LoginController {
 	 * @return new ModelAndView
 	 */
 	public ModelAndView display() {
-
+		
+		logger.info("inside the LoginController");
 		return new ModelAndView("login", Map.of("title", "Login", "credentialsModel", new CredentialsModel()));
 	}
 
