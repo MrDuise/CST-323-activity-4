@@ -87,6 +87,8 @@ public class PostController {
     @GetMapping("/createpost")
     @PostMapping("/createpost")
     public String display(Model model) {
+    	
+    	logger.info("Entering PostController.display");
 
         model.addAttribute("title", "Create Post");
         model.addAttribute("postModel", new PostModel());
